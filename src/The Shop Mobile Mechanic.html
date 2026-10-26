@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Shop Mobile Mechanic — Westmoreland, TN</title>
+<meta name="description" content="The Shop Mobile Mechanic — brakes, oil changes and repairs brought to your driveway. Based in Westmoreland, TN, serving out to Gallatin, TN and Bowling Green, KY.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0c0c0d;
+  --ink-2:#141416;
+  --ink-3:#1d1d20;
+  --line:#2a2a2e;
+  --steel:#8d8f96;
+  --paper:#f3f1ec;
+  --paper-2:#e7e4dc;
+  --red:#e3171e;
+  --red-dk:#b30f15;
+  --amber:#ffc400;
+  --display:'Big Shoulders Display', Impact, sans-serif;
+  --body:'Barlow', 'Helvetica Neue', Arial, sans-serif;
+  --mono:'JetBrains Mono', ui-monospace, monospace;
+  --pad:clamp(20px,4.5vw,72px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+::selection{background:var(--red);color:#fff}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.wrap{padding-inline:var(--pad)}
+.disp{font-family:var(--display);font-weight:900;text-transform:uppercase;line-height:.86;letter-spacing:-.005em}
+p{text-wrap:pretty}
+
+/* ---------- utility strip ---------- */
+.strip{display:flex;justify-content:space-between;gap:24px;align-items:center;padding:9px var(--pad);background:var(--red);color:#fff;font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase}
+.strip span b{font-weight:700}
+.strip .dot{display:inline-block;width:7px;height:7px;background:#fff;border-radius:50%;margin-right:8px;animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.25}}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px var(--pad);background:rgba(12,12,13,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s, padding .3s}
+.nav.scrolled{border-color:var(--line);padding-block:10px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:42px;height:42px;background:var(--red);display:grid;place-items:center;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}
+.logo-mark i{width:16px;height:16px;border-radius:50%;background:var(--ink);display:block}
+.logo-type{display:flex;flex-direction:column;line-height:1}
+.logo-type b{font-family:var(--display);font-weight:900;font-size:28px;letter-spacing:.01em;text-transform:uppercase}
+.logo-type small{font-family:var(--mono);font-size:9.5px;letter-spacing:.32em;color:var(--steel);margin-top:3px;text-transform:uppercase}
+.nav ul{display:flex;gap:clamp(18px,2.2vw,34px);list-style:none}
+.nav ul a{white-space:nowrap;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#cfcfd3;position:relative;padding:6px 0}
+.nav ul a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:100%;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.nav ul a:hover{color:#fff}.nav ul a:hover::after{transform:scaleX(1)}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:15px 22px;font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:background .25s,color .25s,transform .25s}
+.btn-red{background:var(--red);color:#fff}
+.btn-red:hover{background:#fff;color:var(--ink)}
+.btn-ghost{border:1px solid #4a4a50;color:#fff}
+.btn-ghost:hover{border-color:#fff;background:#fff;color:var(--ink)}
+.btn .arr{transition:transform .25s}.btn:hover .arr{transform:translateX(4px)}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line);align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.burger span{width:18px;height:2px;background:#fff;display:block}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:calc(100vh - 110px);display:grid;grid-template-columns:1.25fr .75fr;align-items:end;gap:40px;padding:80px var(--pad) 56px;overflow:hidden;isolation:isolate}
+.hero-bg{position:absolute;inset:0;z-index:-2}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:70% 50%;transform:scale(1.08);animation:heroZoom 14s ease-out forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(90deg,rgba(12,12,13,.97) 0%,rgba(12,12,13,.86) 38%,rgba(12,12,13,.35) 70%,rgba(12,12,13,.55) 100%),
+  linear-gradient(0deg,rgba(12,12,13,1) 0%,rgba(12,12,13,0) 40%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.07;background-image:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 4px)}
+.hero-kicker{display:flex;align-items:center;gap:14px;margin-bottom:28px;color:#d6d6da}
+.hero-kicker::before{content:"";width:44px;height:2px;background:var(--red)}
+.hero h1{font-size:clamp(68px,11.2vw,190px)}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln span{display:inline-block;transform:translateY(105%);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 .ln:nth-child(2) span{animation-delay:.12s}
+.hero h1 .ln:nth-child(3) span{animation-delay:.24s}
+@keyframes rise{to{transform:none}}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero h1 .outline{color:transparent;-webkit-text-stroke:2px var(--paper)}
+.hero-lede{max-width:520px;margin-top:30px;font-size:19px;color:#c9c9ce}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+
+/* work order ticket */
+.ticket{justify-self:end;width:100%;max-width:380px;background:var(--paper);color:var(--ink);position:relative;box-shadow:0 30px 60px rgba(0,0,0,.5);transform:rotate(1.5deg);transition:transform .5s;opacity:0;animation:fadeUp .8s .6s forwards}
+.ticket:hover{transform:rotate(0)}
+@keyframes fadeUp{from{opacity:0;translate:0 30px}to{opacity:1;translate:0 0}}
+.ticket::before,.ticket::after{content:"";position:absolute;left:0;right:0;height:10px;background:radial-gradient(circle at 7px 0,transparent 6px,var(--paper) 6.5px) 0 0/14px 10px repeat-x}
+.ticket::before{top:-10px;transform:scaleY(-1)}
+.ticket::after{bottom:-10px}
+.t-head{display:flex;justify-content:space-between;align-items:center;padding:18px 22px 14px;border-bottom:2px solid var(--ink)}
+.t-head b{font-family:var(--display);font-weight:900;font-size:26px;text-transform:uppercase;letter-spacing:.01em}
+.t-head .mono{font-size:10.5px;color:#5c5c62}
+.t-row{display:grid;grid-template-columns:96px 1fr;gap:10px;padding:12px 22px;border-bottom:1px dashed #b9b6ae;align-items:baseline}
+.t-row .mono{font-size:10px;color:#6a6a70}
+.t-row div{font-weight:600;font-size:16px}
+.t-svc{color:var(--red-dk);font-family:var(--display);font-weight:800;font-size:24px!important;text-transform:uppercase;letter-spacing:.01em;min-height:28px}
+.t-svc .cur{display:inline-block;width:10px;height:20px;background:var(--red);margin-left:3px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+.t-status{display:flex;align-items:center;gap:10px;padding:16px 22px 20px}
+.t-status .bar{flex:1;height:6px;background:#d7d3ca;position:relative;overflow:hidden}
+.t-status .bar i{position:absolute;inset:0;background:var(--red);transform-origin:left;animation:load 3.2s ease-in-out infinite}
+@keyframes load{0%{transform:scaleX(0)}70%,100%{transform:scaleX(1)}}
+.t-status .mono{font-size:10.5px;font-weight:700}
+.stamp{position:absolute;right:18px;top:64px;border:3px solid var(--red);color:var(--red);font-family:var(--display);font-weight:900;font-size:20px;letter-spacing:.06em;padding:4px 10px;transform:rotate(-12deg);opacity:.85;text-transform:uppercase}
+
+.scroll-cue{position:absolute;left:var(--pad);bottom:20px;display:none}
+
+/* ---------- marquee ---------- */
+.marquee{border-block:1px solid var(--line);background:var(--ink-2);overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-flex;animation:mq 38s linear infinite}
+.marquee-track span{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.4vw,46px);text-transform:uppercase;padding:18px 0;display:inline-flex;align-items:center}
+.marquee-track span::after{content:"";width:14px;height:14px;background:var(--red);margin:0 34px;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}
+.marquee-track span:nth-child(even){color:transparent;-webkit-text-stroke:1.2px #8d8f96}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- section headers ---------- */
+section{position:relative}
+.sec{padding:clamp(80px,11vw,150px) var(--pad)}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:20px 60px;align-items:end;margin-bottom:clamp(44px,6vw,80px)}
+.sec-num{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--red);display:flex;align-items:center;gap:12px;grid-column:1/-1;text-transform:uppercase}
+.sec-num::after{content:"";height:1px;width:60px;background:var(--red)}
+.sec-head h2{font-size:clamp(52px,7.4vw,120px)}
+.sec-head p{max-width:420px;color:#b6b6bb;justify-self:end;align-self:end}
+
+/* ---------- two ways ---------- */
+.ways{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);border:1px solid var(--line)}
+.way{position:relative;background:var(--ink);min-height:580px;padding:44px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;isolation:isolate}
+.way img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:grayscale(1) contrast(1.1) brightness(.55);transition:filter .7s, transform .9s}
+.way::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(12,12,13,.4),rgba(12,12,13,.95) 80%)}
+.way:hover img{filter:grayscale(0) contrast(1.05) brightness(.6);transform:scale(1.04)}
+.way-top{display:flex;justify-content:space-between;align-items:flex-start}
+.way-idx{font-family:var(--display);font-weight:900;font-size:120px;line-height:.8;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.55)}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:8px 12px;border:1px solid rgba(255,255,255,.35);background:rgba(12,12,13,.5)}
+.tag.red{background:var(--red);border-color:var(--red)}
+.way h3{font-size:clamp(46px,5vw,78px);margin-bottom:18px}
+.way p{max-width:440px;color:#cfcfd4}
+.way ul{list-style:none;margin-top:26px;display:flex;flex-wrap:wrap;gap:8px}
+.way li{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:7px 11px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+
+/* ---------- services (light) ---------- */
+.light{background:var(--paper);color:var(--ink)}
+.light .sec-head p{color:#55555b}
+.svc-list{border-top:2px solid var(--ink)}
+.svc{display:grid;grid-template-columns:110px 1.1fr 1fr 64px;gap:30px;align-items:center;padding:34px 0;border-bottom:1px solid #c8c4ba;position:relative;cursor:pointer}
+.svc-n{font-family:var(--mono);font-size:13px;color:#77777c}
+.svc h3{font-size:clamp(44px,5.6vw,92px);transition:color .3s, transform .4s}
+.svc p{color:#45454a;max-width:440px}
+.svc-arrow{width:64px;height:64px;border:1.5px solid var(--ink);display:grid;place-items:center;font-size:22px;transition:background .3s,color .3s,transform .3s}
+.svc:hover h3{color:var(--red);transform:translateX(12px)}
+.svc:hover .svc-arrow{background:var(--red);border-color:var(--red);color:#fff;transform:rotate(-45deg)}
+.svc-detail{grid-column:2/-1;display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1)}
+.svc-detail > div{overflow:hidden}
+.svc.open .svc-detail{grid-template-rows:1fr}
+.svc.open .svc-arrow{background:var(--ink);color:#fff;transform:rotate(90deg)}
+.svc-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;padding-top:26px}
+.svc-inner img{width:100%;aspect-ratio:16/10;object-fit:cover;filter:contrast(1.05)}
+.svc-inner .facts{display:flex;flex-direction:column;gap:0;border-top:1px solid #c8c4ba}
+.svc-inner .facts div{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid #c8c4ba}
+.svc-inner .facts span:first-child{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#77777c}
+.svc-inner .facts span:last-child{font-weight:600;text-align:right}
+.svc-inner .btn{margin-top:22px;align-self:flex-start}
+.hover-img{position:fixed;width:300px;aspect-ratio:4/3;pointer-events:none;z-index:40;opacity:0;transform:translate(-50%,-50%) scale(.85) rotate(-3deg);transition:opacity .25s, transform .35s;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.hover-img img{width:100%;height:100%;object-fit:cover}
+.hover-img.on{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(-3deg)}
+
+/* ---------- process ---------- */
+.process{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,100px);align-items:start}
+.proc-visual{position:sticky;top:110px;aspect-ratio:4/5;overflow:hidden;background:var(--ink-3)}
+.proc-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .7s, transform 1.2s;filter:grayscale(.85) contrast(1.1)}
+.proc-visual img.on{opacity:1;transform:scale(1)}
+.proc-visual .pv-label{position:absolute;left:0;bottom:0;right:0;padding:22px 24px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(0deg,rgba(12,12,13,.9),transparent)}
+.pv-label b{font-family:var(--display);font-weight:900;font-size:72px;line-height:.8;color:var(--red)}
+.proc-steps{display:flex;flex-direction:column}
+.step{padding:56px 0;border-top:1px solid var(--line);opacity:.35;transition:opacity .5s}
+.step.on{opacity:1}
+.step:last-child{border-bottom:1px solid var(--line)}
+.step .mono{color:var(--red)}
+.step h3{font-size:clamp(42px,4.4vw,68px);margin:16px 0 18px}
+.step p{color:#bdbdc2;max-width:460px}
+
+/* ---------- quote band ---------- */
+.band{position:relative;padding:clamp(90px,12vw,170px) var(--pad);overflow:hidden;isolation:isolate;text-align:left}
+.band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;filter:grayscale(1) brightness(.35) contrast(1.2)}
+.band::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(179,15,21,.55),rgba(12,12,13,.2))}
+.band blockquote{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:clamp(40px,5.8vw,96px);line-height:.92;max-width:1300px}
+.band blockquote .q{color:var(--red);}
+.band cite{display:block;margin-top:30px;font-style:normal}
+
+/* ---------- service area ---------- */
+.area{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(40px,6vw,90px);align-items:center}
+.map{position:relative;aspect-ratio:1/1.05;background:var(--ink-2);border:1px solid var(--line);overflow:hidden}
+.map .grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;opacity:.55}
+.map .stateline{position:absolute;left:0;right:0;top:41%;border-top:2px dashed #55555b}
+.map .stateline span{position:absolute;right:16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:#8d8f96;padding:6px 0}
+.map .stateline span.ky{bottom:2px}
+.map .stateline span.tn{top:2px}
+.map .ring{position:absolute;border-radius:50%;border:1px solid rgba(227,23,30,.5);left:55%;top:46%;transform:translate(-50%,-50%);animation:pulse 3.6s ease-out infinite}
+.map .ring.r2{animation-delay:1.2s}.map .ring.r3{animation-delay:2.4s}
+@keyframes pulse{from{width:20px;height:20px;opacity:1}to{width:120%;height:120%;opacity:0}}
+.map .route{position:absolute;height:2px;background:repeating-linear-gradient(90deg,var(--amber) 0 10px,transparent 10px 18px);transform-origin:0 50%;opacity:.4;transition:opacity .4s}
+.map .route.on{opacity:1}
+.pin{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer}
+.pin i{width:16px;height:16px;border-radius:50%;background:var(--paper);border:4px solid var(--ink);box-shadow:0 0 0 2px var(--paper);transition:background .3s, box-shadow .3s}
+.pin.base i{width:26px;height:26px;background:var(--red);box-shadow:0 0 0 3px var(--red),0 0 30px var(--red)}
+.pin span{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);padding:5px 9px;border:1px solid var(--line);white-space:nowrap}
+.pin.on i{background:var(--amber);box-shadow:0 0 0 2px var(--amber),0 0 24px var(--amber)}
+.pin.base.on i{background:var(--red)}
+.map .compass{position:absolute;left:18px;top:16px;font-family:var(--mono);font-size:11px;color:#8d8f96;letter-spacing:.14em}
+.map .note{position:absolute;left:18px;bottom:16px;font-family:var(--mono);font-size:10px;color:#6e6e74;letter-spacing:.1em}
+.towns{display:flex;flex-direction:column;border-top:1px solid var(--line);margin-top:34px}
+.town{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line);text-align:left;width:100%;transition:padding .3s}
+.town b{font-family:var(--display);font-weight:800;font-size:38px;text-transform:uppercase;line-height:1}
+.town small{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:#8d8f96;text-transform:uppercase;margin-top:6px}
+.town .st{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:7px 11px;border:1px solid var(--line)}
+.town:hover,.town.on{padding-left:14px}
+.town.on b{color:var(--amber)}
+.town.base.on b{color:var(--red)}
+.area-copy h2{font-size:clamp(52px,6.4vw,104px)}
+.area-copy > p{color:#b6b6bb;margin-top:22px;max-width:480px}
+.unsure{margin-top:28px;padding:20px 22px;background:var(--ink-3);display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.unsure p{font-size:15.5px;color:#d0d0d4;max-width:330px}
+
+/* ---------- specials board ---------- */
+.board{background:var(--ink-2);border-top:1px solid var(--line)}
+.board-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.deal{background:var(--paper);color:var(--ink);padding:30px 28px 26px;position:relative;display:flex;flex-direction:column;min-height:400px;transition:transform .4s}
+.deal:nth-child(1){transform:rotate(-1.2deg)}.deal:nth-child(2){transform:rotate(.8deg)}.deal:nth-child(3){transform:rotate(-.5deg)}
+.deal:hover{transform:rotate(0) translateY(-6px)}
+.deal::before{content:"";position:absolute;top:-9px;left:50%;width:18px;height:18px;border-radius:50%;background:var(--red);transform:translateX(-50%);box-shadow:0 3px 6px rgba(0,0,0,.4)}
+.deal .mono{font-size:10.5px;color:#6a6a70}
+.deal .price{font-family:var(--display);font-weight:900;font-size:120px;line-height:.85;margin:22px 0 4px;color:var(--ink)}
+.deal .price sup{font-size:.4em;vertical-align:top;position:relative;top:.25em;margin-right:2px}
+.deal h4{font-family:var(--display);font-weight:800;font-size:34px;text-transform:uppercase;line-height:1}
+.deal p{font-size:15px;color:#4c4c52;margin-top:14px}
+.deal .foot{margin-top:auto;padding-top:18px;border-top:1px dashed #b9b6ae;display:flex;justify-content:space-between;align-items:center}
+.deal .chip{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;padding:5px 9px;background:var(--ink);color:#fff}
+.deal .chip.r{background:var(--red)}
+.deal.dark{background:var(--red);color:#fff}
+.deal.dark .mono,.deal.dark p{color:rgba(255,255,255,.85)}
+.deal.dark .price{color:#fff;font-size:88px}
+.deal.dark .foot{border-color:rgba(255,255,255,.4)}
+.deal.dark::before{background:var(--ink)}
+.board-note{margin-top:46px;font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:#8d8f96;text-transform:uppercase;display:flex;gap:12px;align-items:center}
+.board-note::before{content:"!";display:grid;place-items:center;width:22px;height:22px;background:var(--amber);color:var(--ink);font-weight:700}
+
+/* ---------- request builder ---------- */
+.req{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(40px,6vw,90px)}
+.req-copy h2{font-size:clamp(56px,7vw,116px)}
+.req-copy p{color:#b6b6bb;margin-top:24px;max-width:430px}
+.req-copy .contact{margin-top:40px;display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.req-copy .contact a,.req-copy .contact div{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);font-weight:600}
+.req-copy .contact span:first-child{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8d8f96;font-weight:400}
+.req-copy .contact a:hover span:last-child{color:var(--red)}
+.form{background:var(--paper);color:var(--ink);padding:clamp(26px,3.5vw,46px)}
+.form-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:2px solid var(--ink);margin-bottom:26px}
+.form-head b{font-family:var(--display);font-weight:900;font-size:32px;text-transform:uppercase}
+.fld{margin-bottom:22px}
+.fld label{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#5c5c62;margin-bottom:10px}
+.fld input,.fld textarea,.fld select{width:100%;border:0;border-bottom:1.5px solid #a9a59c;background:transparent;font:500 18px var(--body);padding:8px 0 10px;color:var(--ink);outline:none;transition:border-color .25s;border-radius:0}
+.fld textarea{resize:vertical;min-height:80px}
+.fld input:focus,.fld textarea:focus{border-color:var(--red)}
+.row3{display:grid;grid-template-columns:.7fr 1fr 1fr;gap:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips button{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;padding:11px 14px;border:1.5px solid var(--ink);transition:background .2s,color .2s}
+.chips button:hover{background:var(--paper-2)}
+.chips button.on{background:var(--ink);color:#fff}
+.chips.where button.on{background:var(--red);border-color:var(--red)}
+.preview{margin-top:8px;background:var(--ink);color:#e4e4e8;padding:18px 20px;font-family:var(--mono);font-size:12.5px;line-height:1.7;white-space:pre-wrap;min-height:120px;position:relative}
+.preview::before{content:"MESSAGE PREVIEW";position:absolute;top:-9px;left:14px;background:var(--red);color:#fff;font-size:9.5px;letter-spacing:.16em;padding:2px 8px}
+.form-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;align-items:center}
+.form-actions .btn-ghost{border-color:var(--ink);color:var(--ink)}
+.form-actions .btn-ghost:hover{background:var(--ink);color:#fff}
+.copied{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--red);opacity:0;transition:opacity .3s;text-transform:uppercase}
+.copied.on{opacity:1}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:70px var(--pad) 30px;background:var(--ink)}
+.foot-big{font-size:clamp(80px,17vw,300px);color:var(--ink-3);line-height:.78;user-select:none;margin-bottom:50px;-webkit-text-stroke:1px #26262a}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid var(--line)}
+.foot-grid h5{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:18px;font-weight:500}
+.foot-grid a,.foot-grid p{display:block;color:#bdbdc2;font-size:15.5px;margin-bottom:8px}
+.foot-grid a:hover{color:#fff}
+.foot-bot{display:flex;justify-content:space-between;gap:20px;padding-top:24px;color:#6e6e74;flex-wrap:wrap}
+
+/* floating messenger */
+.fab{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;align-items:center;gap:12px;background:var(--red);color:#fff;padding:14px 20px 14px 16px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 14px 34px rgba(227,23,30,.35);transform:translateY(120px);transition:transform .45s cubic-bezier(.2,.8,.2,1), background .25s}
+.fab.show{transform:none}
+.fab:hover{background:#fff;color:var(--ink)}
+.fab i{width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.3);animation:blink 1.6s infinite}
+.fab:hover i{background:var(--red)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.8,.2,1), transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+
+/* mobile menu */
+.mmenu{position:fixed;inset:0;z-index:70;background:var(--ink);padding:24px var(--pad);display:flex;flex-direction:column;transform:translateY(-100%);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.mmenu.open{transform:none}
+.mmenu .top{display:flex;justify-content:space-between;align-items:center}
+.mmenu nav{display:flex;flex-direction:column;margin-top:50px}
+.mmenu nav a{font-family:var(--display);font-weight:900;font-size:58px;text-transform:uppercase;line-height:1.05;border-bottom:1px solid var(--line);padding:10px 0}
+.mmenu .btn{margin-top:auto;justify-content:center}
+
+@media (max-width:1180px){
+  .nav ul,.nav .btn{display:none}
+  .burger{display:flex}
+}
+@media (max-width:1080px){
+  .hero{grid-template-columns:1fr;align-items:end;padding-top:120px}
+  .ticket{justify-self:start;transform:rotate(0)}
+  .ways,.process,.area,.req{grid-template-columns:1fr}
+  .proc-visual{position:relative;top:0;aspect-ratio:16/10}
+  .board-grid{grid-template-columns:1fr}
+  .deal{min-height:0}
+  .svc{grid-template-columns:60px 1fr 52px}
+  .svc p{display:none}
+  .svc-arrow{width:52px;height:52px}
+  .svc-detail{grid-column:1/-1}
+  .svc-inner{grid-template-columns:1fr}
+  .sec-head{grid-template-columns:1fr}
+  .sec-head p{justify-self:start}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .hover-img{display:none}
+  .strip span:nth-child(2){display:none}
+}
+@media (max-width:620px){
+  body{font-size:16px}
+  .way{min-height:520px;padding:28px}
+  .way-idx{font-size:80px}
+  .row3{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .strip{justify-content:center}
+  .strip span:last-child{display:none}
+  .town b{font-size:30px}
+  .pin span{font-size:9.5px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero h1 .ln span{transform:none}.rv{opacity:1;transform:none}.ticket{opacity:1}}
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#0c0c0d"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0c0c0d"/><polygon points="37,30 63,30 76,50 63,70 37,70 24,50" fill="#e3171e"/><circle cx="50" cy="50" r="8" fill="#0c0c0d"/></svg></template>
+
+<div class="strip">
+  <span><i class="dot"></i>Mobile service · Westmoreland, TN base</span>
+  <span>Serving out to <b>Gallatin, TN</b> &amp; <b>Bowling Green, KY</b></span>
+  <span>Book through Facebook Messenger</span>
+</div>
+
+<header class="nav" id="nav">
+  <a href="#top" class="logo" aria-label="The Shop Mobile Mechanic — home">
+    <span class="logo-mark"><i></i></span>
+    <span class="logo-type"><b>The Shop</b><small>Mobile Mechanic</small></span>
+  </a>
+  <ul>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#area">Service area</a></li>
+    <li><a href="#specials">Specials</a></li>
+  </ul>
+  <a href="#book" class="btn btn-red">Book service <span class="arr">→</span></a>
+  <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span></button>
+</header>
+
+<div class="mmenu" id="mmenu">
+  <div class="top">
+    <span class="logo"><span class="logo-mark"><i></i></span><span class="logo-type"><b>The Shop</b><small>Mobile Mechanic</small></span></span>
+    <button class="burger" id="mclose" aria-label="Close menu" style="display:flex;font-size:22px">✕</button>
+  </div>
+  <nav>
+    <a href="#how">How it works</a>
+    <a href="#services">Services</a>
+    <a href="#area">Service area</a>
+    <a href="#specials">Specials</a>
+    <a href="#book">Book</a>
+  </nav>
+  <a href="#book" class="btn btn-red">Book service →</a>
+</div>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero" data-screen-label="01 Hero">
+  <div class="hero-bg"><img src="../img/engine-red.jpg" alt="Engine bay under the hood"></div>
+  <div>
+    <div class="hero-kicker mono">Mobile auto repair · Middle Tennessee</div>
+    <h1 class="disp">
+      <span class="ln"><span>The shop</span></span>
+      <span class="ln"><span class="outline">comes to</span></span>
+      <span class="ln"><span><em>your drive.</em></span></span>
+    </h1>
+    <p class="hero-lede">Brakes, oil changes and repairs handled where your vehicle already sits — your driveway, your work lot, your side of town. Based in Westmoreland, Tennessee.</p>
+    <div class="hero-ctas">
+      <a href="#book" class="btn btn-red">Request a mechanic <span class="arr">→</span></a>
+      <a href="#area" class="btn btn-ghost">Check your area</a>
+    </div>
+  </div>
+
+  <aside class="ticket" aria-label="Sample work order">
+    <div class="t-head"><b>Work Order</b><span class="mono" id="tNo">No. 0001</span></div>
+    <div class="stamp">Mobile</div>
+    <div class="t-row"><span class="mono">Service</span><div class="t-svc"><span id="tSvc"></span><span class="cur"></span></div></div>
+    <div class="t-row"><span class="mono">Location</span><div id="tLoc">Your driveway</div></div>
+    <div class="t-row"><span class="mono">Dispatch</span><div>Westmoreland, TN</div></div>
+    <div class="t-row"><span class="mono">Waiting room</span><div>Not required</div></div>
+    <div class="t-status"><span class="mono">Rolling</span><span class="bar"><i></i></span><span class="mono">→</span></div>
+  </aside>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Brake service</span><span>Oil changes</span><span>Mobile repair</span><span>Westmoreland</span><span>Gallatin</span><span>Bowling Green</span>
+    <span>Brake service</span><span>Oil changes</span><span>Mobile repair</span><span>Westmoreland</span><span>Gallatin</span><span>Bowling Green</span>
+  </div>
+</div>
+
+<!-- TWO WAYS -->
+<section class="sec" id="how" data-screen-label="02 Two Ways">
+  <div class="sec-head">
+    <div class="sec-num">01 — Two ways in</div>
+    <h2 class="disp rv">Your driveway<br>or our base.</h2>
+    <p class="rv d1">Most jobs, we roll out to you. Some deals run at The Shop's home base in Westmoreland. Either way, it starts with a message.</p>
+  </div>
+  <div class="ways">
+    <article class="way rv">
+      <img src="../img/wheel-off.jpg" alt="Car on a jack stand with the wheel removed">
+      <div class="way-top"><span class="way-idx">01</span><span class="tag red">Most popular</span></div>
+      <div>
+        <h3 class="disp">We come<br>to you</h3>
+        <p>Skip the tow, the drop-off and the ride home. Your mechanic shows up at your place and does the work on site.</p>
+        <ul><li>Home</li><li>Work lot</li><li>Westmoreland → Gallatin</li><li>Bowling Green, KY</li></ul>
+      </div>
+    </article>
+    <article class="way rv d1">
+      <img src="../img/garage-bw.jpg" alt="Mechanic working under a lifted vehicle">
+      <div class="way-top"><span class="way-idx">02</span><span class="tag">Base location</span></div>
+      <div>
+        <h3 class="disp">Bring it<br>to the base</h3>
+        <p>The Shop's home base in Westmoreland has run its own deals — including bring-your-own-parts brake jobs and oil changes.</p>
+        <ul><li>Westmoreland, TN 37186</li><li>You bring the parts</li><li>Base-only pricing</li></ul>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec light" id="services" data-screen-label="03 Services">
+  <div class="sec-head">
+    <div class="sec-num">02 — Services</div>
+    <h2 class="disp rv">What we<br>fix on site.</h2>
+    <p class="rv d1">The work our customers book most — done in your driveway with the tools on the truck. Tap a service for the details.</p>
+  </div>
+  <div class="svc-list" id="svcList">
+    <div class="svc" data-img="../img/brake-work.jpg">
+      <span class="svc-n">/01</span>
+      <h3 class="disp">Brakes</h3>
+      <p>Pads, rotors and the full brake job — handled at your vehicle, wherever it's parked.</p>
+      <span class="svc-arrow">↗</span>
+      <div class="svc-detail"><div><div class="svc-inner">
+        <img src="../img/brake-work.jpg" alt="Mechanic servicing a brake rotor and caliper">
+        <div style="display:flex;flex-direction:column">
+          <div class="facts">
+            <div><span>Where</span><span>Your driveway or the Westmoreland base</span></div>
+            <div><span>Past mobile special</span><span>$150 brake special</span></div>
+            <div><span>Past base deal</span><span>$50 brake job · you bring parts</span></div>
+          </div>
+          <a href="#book" class="btn btn-red" data-svc="Brakes">Book brakes <span class="arr">→</span></a>
+        </div>
+      </div></div></div>
+    </div>
+    <div class="svc" data-img="../img/engine-hands.jpg">
+      <span class="svc-n">/02</span>
+      <h3 class="disp">Oil changes</h3>
+      <p>Routine oil service without losing a morning at a lube shop.</p>
+      <span class="svc-arrow">↗</span>
+      <div class="svc-detail"><div><div class="svc-inner">
+        <img src="../img/engine-hands.jpg" alt="Close-up of engine valvetrain">
+        <div style="display:flex;flex-direction:column">
+          <div class="facts">
+            <div><span>Where</span><span>Your driveway or the Westmoreland base</span></div>
+            <div><span>Past base deal</span><span>$15 oil change · you bring parts</span></div>
+            <div><span>Booking</span><span>Facebook Messenger</span></div>
+          </div>
+          <a href="#book" class="btn btn-red" data-svc="Oil change">Book an oil change <span class="arr">→</span></a>
+        </div>
+      </div></div></div>
+    </div>
+    <div class="svc" data-img="../img/engine-parts.jpg">
+      <span class="svc-n">/03</span>
+      <h3 class="disp">Mobile repair</h3>
+      <p>Something's off and you'd rather not limp it to a shop? Tell us what it's doing.</p>
+      <span class="svc-arrow">↗</span>
+      <div class="svc-detail"><div><div class="svc-inner">
+        <img src="../img/engine-parts.jpg" alt="Engine belts and pulleys">
+        <div style="display:flex;flex-direction:column">
+          <div class="facts">
+            <div><span>Where</span><span>Westmoreland out to Gallatin, TN · Bowling Green, KY</span></div>
+            <div><span>First step</span><span>Describe the problem in a message</span></div>
+            <div><span>Not sure we cover it?</span><span>Just ask</span></div>
+          </div>
+          <a href="#book" class="btn btn-red" data-svc="Repair">Describe the problem <span class="arr">→</span></a>
+        </div>
+      </div></div></div>
+    </div>
+  </div>
+  <div class="hover-img" id="hoverImg"><img alt="" src="../img/brake-work.jpg"></div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec" data-screen-label="04 Process">
+  <div class="sec-head">
+    <div class="sec-num">03 — How a visit works</div>
+    <h2 class="disp rv">Message.<br>Meet. Fixed.</h2>
+  </div>
+  <div class="process">
+    <div class="proc-visual" id="procVisual">
+      <img src="../img/tools-bw.jpg" alt="Wall of mechanic hand tools" class="on">
+      <img src="../img/truck-road.jpg" alt="Pickup truck on an open road">
+      <img src="../img/brake-disc.jpg" alt="Finished brake rotor and caliper">
+      <div class="pv-label"><b id="pvNum">01</b><span class="mono" id="pvTxt">Message</span></div>
+    </div>
+    <div class="proc-steps">
+      <div class="step on" data-step="0">
+        <span class="mono">Step 01 · Message</span>
+        <h3 class="disp">Tell us what it's doing.</h3>
+        <p>Send The Shop a message on Facebook with your vehicle, the problem, and where it's parked. The request builder below writes it for you.</p>
+      </div>
+      <div class="step" data-step="1">
+        <span class="mono">Step 02 · We roll out</span>
+        <h3 class="disp">The shop comes to you.</h3>
+        <p>We confirm the job and the time, then head out from Westmoreland to your driveway or work lot — anywhere from Gallatin, TN up to Bowling Green, KY.</p>
+      </div>
+      <div class="step" data-step="2">
+        <span class="mono">Step 03 · Back on the road</span>
+        <h3 class="disp">Fixed where it sits.</h3>
+        <p>The work gets done on site. No tow, no shuttle, no afternoon in a waiting room.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BAND -->
+<section class="band" data-screen-label="05 Quote">
+  <img src="../img/wrenches.jpg" alt="">
+  <blockquote class="rv"><span class="q">“</span>Another dreary few days here in the swamplands of Middle TN. That hasn't deterred us a bit.<span class="q">”</span></blockquote>
+  <cite class="mono rv d1">— The Shop Mobile Mechanic, to its Facebook family</cite>
+</section>
+
+<!-- SERVICE AREA -->
+<section class="sec" id="area" data-screen-label="06 Service Area">
+  <div class="area">
+    <div class="map rv" id="map">
+      <div class="grid"></div>
+      <div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div>
+      <div class="stateline"><span class="ky">KENTUCKY ↑</span><span class="tn">TENNESSEE ↓</span></div>
+      <div class="route" data-to="bg"></div>
+      <div class="route" data-to="ga"></div>
+      <button class="pin" data-town="bg" style="left:30%;top:16%"><i></i><span>Bowling Green, KY</span></button>
+      <button class="pin base on" data-town="wm" style="left:55%;top:46%"><i></i><span>Westmoreland · Base</span></button>
+      <button class="pin" data-town="ga" style="left:40%;top:84%"><i></i><span>Gallatin, TN</span></button>
+      <span class="compass">N ↑</span>
+      <span class="note">Schematic — not to scale</span>
+    </div>
+    <div class="area-copy">
+      <div class="sec-num" style="margin-bottom:22px">04 — Service area</div>
+      <h2 class="disp rv">Westmoreland<br>&amp; the line<br>either side.</h2>
+      <p class="rv d1">We run out of Westmoreland, Tennessee — south as far as Gallatin, and north across the state line to Bowling Green, Kentucky.</p>
+      <div class="towns">
+        <button class="town base on" data-town="wm"><span><b>Westmoreland, TN</b><small>Home base · 37186</small></span><span class="st">Base</span></button>
+        <button class="town" data-town="ga"><span><b>Gallatin, TN</b><small>Southern edge — no service past Gallatin</small></span><span class="st">In range</span></button>
+        <button class="town" data-town="bg"><span><b>Bowling Green, KY</b><small>Added to the service area</small></span><span class="st">In range</span></button>
+      </div>
+      <div class="unsure rv">
+        <p>Somewhere in between and not sure you're covered? Feel free to reach out.</p>
+        <a href="#book" class="btn btn-red">Ask us <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALS -->
+<section class="sec board" id="specials" data-screen-label="07 Specials">
+  <div class="sec-head">
+    <div class="sec-num">05 — The board</div>
+    <h2 class="disp rv">Specials<br>we've run.</h2>
+    <p class="rv d1">Pinned from The Shop's Facebook page. Deals change — message us to see what's running right now.</p>
+  </div>
+  <div class="board-grid">
+    <div class="deal rv">
+      <span class="mono">Mobile special</span>
+      <div class="price"><sup>$</sup>150</div>
+      <h4>Brake special</h4>
+      <p>Run as a mobile brake special when The Shop opened up new availability.</p>
+      <div class="foot"><span class="chip r">Mobile</span><span class="mono">Past offer</span></div>
+    </div>
+    <div class="deal rv d1">
+      <span class="mono">Base location</span>
+      <div class="price"><sup>$</sup>50</div>
+      <h4>Brake jobs</h4>
+      <p>You bring the parts. Deal only at The Shop's base location in Westmoreland.</p>
+      <div class="foot"><span class="chip">Base only</span><span class="mono">Past offer</span></div>
+    </div>
+    <div class="deal dark rv d2">
+      <span class="mono">Base location</span>
+      <div class="price"><sup>$</sup>15</div>
+      <h4>Oil changes</h4>
+      <p>You bring the parts. Deal only at The Shop's base location in Westmoreland.</p>
+      <div class="foot"><span class="chip">Base only</span><span class="mono">Past offer</span></div>
+    </div>
+  </div>
+  <div class="board-note">Prices shown are past specials, not current quotes. Message The Shop for today's pricing.</div>
+</section>
+
+<!-- REQUEST -->
+<section class="sec" id="book" data-screen-label="08 Book">
+  <div class="req">
+    <div class="req-copy">
+      <div class="sec-num" style="margin-bottom:22px">06 — Book</div>
+      <h2 class="disp rv">Build your<br>request.</h2>
+      <p class="rv d1">The Shop books through Facebook Messenger. Fill this out, copy the message, and send it over — we'll get back to you to confirm the job.</p>
+      <div class="contact rv d2">
+        <a href="https://www.facebook.com/theshop.mobilemechanic" target="_blank" rel="noopener"><span>Facebook</span><span>/theshop.mobilemechanic ↗</span></a>
+        <a href="https://m.me/theshop.mobilemechanic" target="_blank" rel="noopener"><span>Messenger</span><span>Send a message ↗</span></a>
+        <div><span>Base</span><span>Westmoreland, TN 37186</span></div>
+      </div>
+    </div>
+
+    <form class="form rv d1" id="reqForm" onsubmit="return false">
+      <div class="form-head"><b>Service request</b><span class="mono" style="color:#6a6a70">Messenger-ready</span></div>
+      <div class="fld">
+        <label>What do you need?</label>
+        <div class="chips" id="svcChips">
+          <button type="button" class="on">Brakes</button>
+          <button type="button">Oil change</button>
+          <button type="button">Repair</button>
+          <button type="button">Not sure</button>
+        </div>
+      </div>
+      <div class="fld">
+        <label>Vehicle</label>
+        <div class="row3">
+          <input id="fYear" placeholder="Year" inputmode="numeric" maxlength="4">
+          <input id="fMake" placeholder="Make">
+          <input id="fModel" placeholder="Model">
+        </div>
+      </div>
+      <div class="fld">
+        <label>Where should we do the work?</label>
+        <div class="chips where" id="whereChips">
+          <button type="button" class="on">Come to me</button>
+          <button type="button">I'll bring it to the base</button>
+        </div>
+      </div>
+      <div class="fld">
+        <label>Town / area</label>
+        <input id="fTown" placeholder="e.g. Westmoreland, Portland, Gallatin…">
+      </div>
+      <div class="fld">
+        <label>What's it doing?</label>
+        <textarea id="fNotes" placeholder="Squealing when I brake, light on the dash, due for oil…"></textarea>
+      </div>
+      <div class="preview" id="preview"></div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-red" id="sendBtn">Copy &amp; open Messenger <span class="arr">→</span></button>
+        <button type="button" class="btn btn-ghost" id="copyBtn">Copy only</button>
+        <span class="copied" id="copied">Copied — paste it in Messenger</span>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer data-screen-label="09 Footer">
+  <div class="disp foot-big">The Shop</div>
+  <div class="foot-grid">
+    <div>
+      <a href="#top" class="logo" style="margin-bottom:20px"><span class="logo-mark"><i></i></span><span class="logo-type"><b>The Shop</b><small>Mobile Mechanic</small></span></a>
+      <p style="max-width:300px">Mobile auto repair out of Westmoreland, Tennessee. The shop, brought to your driveway.</p>
+    </div>
+    <div>
+      <h5>Services</h5>
+      <a href="#services">Brakes</a><a href="#services">Oil changes</a><a href="#services">Mobile repair</a>
+    </div>
+    <div>
+      <h5>Service area</h5>
+      <a href="#area">Westmoreland, TN</a><a href="#area">Gallatin, TN</a><a href="#area">Bowling Green, KY</a>
+    </div>
+    <div>
+      <h5>Reach us</h5>
+      <a href="https://www.facebook.com/theshop.mobilemechanic" target="_blank" rel="noopener">Facebook ↗</a>
+      <a href="https://m.me/theshop.mobilemechanic" target="_blank" rel="noopener">Messenger ↗</a>
+      <p>3120 Tricia Ave, Lot 4<br>Westmoreland, TN 37186</p>
+    </div>
+  </div>
+  <div class="foot-bot mono"><span>© The Shop Mobile Mechanic</span><span>Westmoreland · Tennessee</span></div>
+</footer>
+
+<a href="#book" class="fab" id="fab"><i></i>Message The Shop</a>
+
+<script>
+(function(){
+  // sticky nav + fab
+  const nav=document.getElementById('nav'),fab=document.getElementById('fab');
+  const onScroll=()=>{const y=scrollY;nav.classList.toggle('scrolled',y>20);
+    const book=document.getElementById('book').getBoundingClientRect();
+    fab.classList.toggle('show',y>innerHeight*.7 && book.top>innerHeight*.6);};
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // mobile menu
+  const mm=document.getElementById('mmenu');
+  document.getElementById('burger').onclick=()=>mm.classList.add('open');
+  document.getElementById('mclose').onclick=()=>mm.classList.remove('open');
+  mm.querySelectorAll('a').forEach(a=>a.onclick=()=>mm.classList.remove('open'));
+
+  // ticket typewriter
+  const svcs=['Brake service','Oil change','Mobile repair'];const locs=['Your driveway','Your work lot','Your driveway'];
+  const tSvc=document.getElementById('tSvc'),tLoc=document.getElementById('tLoc'),tNo=document.getElementById('tNo');
+  let si=0,ci=0,del=false,n=1;
+  function type(){const w=svcs[si];
+    if(!del){ci++;tSvc.textContent=w.slice(0,ci);if(ci===w.length){del=true;return setTimeout(type,2200);}}
+    else{ci--;tSvc.textContent=w.slice(0,ci);if(ci===0){del=false;si=(si+1)%svcs.length;tLoc.textContent=locs[si];n++;tNo.textContent='No. '+String(n).padStart(4,'0');}}
+    setTimeout(type,del?35:75);}
+  setTimeout(type,900);
+
+  // reveal
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.15});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+  // services accordion + hover image
+  const hov=document.getElementById('hoverImg'),hovImg=hov.querySelector('img');
+  document.querySelectorAll('.svc').forEach(s=>{
+    s.addEventListener('click',e=>{if(e.target.closest('a'))return;const was=s.classList.contains('open');
+      document.querySelectorAll('.svc').forEach(x=>x.classList.remove('open'));if(!was)s.classList.add('open');hov.classList.remove('on');});
+    s.addEventListener('mouseenter',()=>{if(s.classList.contains('open'))return;hovImg.src=s.querySelector('.svc-inner img').src;hov.classList.add('on');});
+    s.addEventListener('mouseleave',()=>hov.classList.remove('on'));
+    s.addEventListener('mousemove',e=>{if(s.classList.contains('open')){hov.classList.remove('on');return;}hov.style.left=(e.clientX+190)+'px';hov.style.top=e.clientY+'px';});
+  });
+  document.querySelectorAll('[data-svc]').forEach(a=>a.addEventListener('click',()=>setSvc(a.dataset.svc)));
+
+  // process steps
+  const steps=[...document.querySelectorAll('.step')],pimgs=[...document.querySelectorAll('#procVisual img')];
+  const pvNum=document.getElementById('pvNum'),pvTxt=document.getElementById('pvTxt');const labels=['Message','We roll out','Back on the road'];
+  const sio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const i=+e.target.dataset.step;
+    steps.forEach((s,j)=>s.classList.toggle('on',j===i));pimgs.forEach((im,j)=>im.classList.toggle('on',j===i));
+    pvNum.textContent='0'+(i+1);pvTxt.textContent=labels[i];}}),{rootMargin:'-45% 0px -45% 0px'});
+  steps.forEach(s=>sio.observe(s));
+
+  // map routes
+  const map=document.getElementById('map');
+  function placeRoutes(){const r=map.getBoundingClientRect();const base=map.querySelector('[data-town=wm]');
+    const bx=parseFloat(base.style.left)/100*r.width,by=parseFloat(base.style.top)/100*r.height;
+    map.querySelectorAll('.route').forEach(rt=>{const p=map.querySelector('.pin[data-town='+rt.dataset.to+']');
+      const x=parseFloat(p.style.left)/100*r.width,y=parseFloat(p.style.top)/100*r.height;
+      const dx=x-bx,dy=y-by;rt.style.left=bx+'px';rt.style.top=by+'px';rt.style.width=Math.hypot(dx,dy)+'px';rt.style.transform='rotate('+Math.atan2(dy,dx)+'rad)';});}
+  placeRoutes();addEventListener('resize',placeRoutes);
+  function selTown(t){document.querySelectorAll('[data-town]').forEach(el=>el.classList.toggle('on',el.dataset.town===t||(el.classList.contains('pin')&&el.dataset.town==='wm')));
+    map.querySelectorAll('.route').forEach(rt=>rt.classList.toggle('on',rt.dataset.to===t));}
+  document.querySelectorAll('.pin,.town').forEach(el=>{el.addEventListener('click',()=>selTown(el.dataset.town));el.addEventListener('mouseenter',()=>selTown(el.dataset.town));});
+
+  // request builder
+  const chipsGroup=(id)=>{const g=document.getElementById(id);g.querySelectorAll('button').forEach(b=>b.onclick=()=>{g.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');build();});return g;};
+  const sc=chipsGroup('svcChips'),wc=chipsGroup('whereChips');
+  function setSvc(name){sc.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.textContent===name));build();}
+  const $=id=>document.getElementById(id);
+  ['fYear','fMake','fModel','fTown','fNotes'].forEach(id=>$(id).addEventListener('input',build));
+  function msg(){const svc=sc.querySelector('.on').textContent,where=wc.querySelector('.on').textContent;
+    const veh=[$('fYear').value,$('fMake').value,$('fModel').value].filter(Boolean).join(' ')||'[year make model]';
+    const town=$('fTown').value||'[town]';const notes=$('fNotes').value;
+    return `Hi The Shop! I'd like to book: ${svc}.\nVehicle: ${veh}\n${where==='Come to me'?'Please come to me in: '+town:'I can bring it to your base. I\'m coming from: '+town}${notes?'\nWhat it\'s doing: '+notes:''}\nWhat's your next availability?`;}
+  function build(){$('preview').textContent=msg();}
+  build();
+  async function copy(){try{await navigator.clipboard.writeText(msg());}catch(e){const t=document.createElement('textarea');t.value=msg();document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(_){}t.remove();}
+    $('copied').classList.add('on');setTimeout(()=>$('copied').classList.remove('on'),3000);}
+  $('copyBtn').onclick=copy;
+  $('sendBtn').onclick=async()=>{await copy();window.open('https://m.me/theshop.mobilemechanic','_blank','noopener');};
+})();
+</script>
+</body>
+</html>
